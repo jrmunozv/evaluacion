@@ -42,19 +42,19 @@
                     <!--  START PRIMARY CONTENT -->
                     <div id="primary_content">
                         
-                        <h2>Ingresar al sistema</h2>
-                        <p>Debe loguearse para acceder a los servicios de esta web empresa.</p>
+                        <h2>Sistema para evaluar la salud de su empresa.</h2>
+                        <p>Debe seguir con los pasos indicados a continuación para que le entreguemos una evaluación de su empresa.</p>
                         
                         
                         <!--<div class="information large png_bg">For the demo, just hit the login button</div>-->
                         
                         <form action="" method="post" name="form">
                         	<fieldset>
-                        		<legend>Ingresar al sistema</legend>
+                        		<legend>Ejecutar estos pasos:</legend>
 	                        	<table>
 			                          <tr>
 			                          	<td valign="top" align="left">
-			                            	<label for="login">Login:</label>
+			                            	<label for="login">1. Descargar esta plantilla y llenar con los datos de su empresa:</label>
 			                          	</td>
 			                          	<td valign="top" align="left">
 			                            	<input name="login" type="text" class="fade" id="login" value="" required />
@@ -66,10 +66,19 @@
 
 			        				  <tr>
 			                            <td valign="top" align="left">
-			                            	<label for="password">Password:</label>
+			                            	<label for="password">2. Subir la plantilla con los datos de su empresa:</label>
 			                           	</td>
 			                            <td valign="top" align="left">
-			                            	<input name="pass" type="password" class="fade" id="pass" value="" required />
+			                            	<input name="pass" type="text" class="fade" id="pass" value="" required />
+			                           	</td>
+			                          </tr>
+
+                                      <tr>
+			                            <td valign="top" align="left">
+			                            	<label for="password">3. Generar la evaluación en archivo pdf:</label>
+			                           	</td>
+			                            <td valign="top" align="left">
+			                            	<input name="pass" type="text" class="fade" id="pass" value="" required />
 			                           	</td>
 			                          </tr>
 
@@ -102,6 +111,9 @@
                 </div><!--  end div #content_wrapper -->
                 <!--  END CONTENT_WRAPPER -->
         	</article>
+
+            <?php include("model/archivopdfModel.php");?>
+
         </section>
         
         <aside>
