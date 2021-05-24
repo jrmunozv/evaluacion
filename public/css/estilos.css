@@ -226,7 +226,10 @@ footer{
 	filter:alpha(opacity=7);
 }
 
-
+.disabledbutton{
+	pointer-events: none;
+	opacity: 0.5;
+}
 
 
 

@@ -1,24 +1,24 @@
 <!DOCTYPE html >
 <html lang= "es" >
 <head>
-	<title>..:: Log in ::..</title>
+	<title>Evaluacion</title>
     <meta charset = "utf-8" />
     <meta name="description" content="Bienvenido" />
     <meta name = "viewport" content ="width= devide-with, inicial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href= "public/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href= "" />
     <link rel="author" type="text/plain" href= "humans.txt" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href= "sitemap.xml" />
     
-    <link href="public/css/smoothness/jquery-ui-1.8.23.custom.css" rel="stylesheet" media="screen">
+   
  	
-    <link rel="stylesheet" href= "public/css/estilos.css" />
+    <link rel="stylesheet" href= "./public/css/estilos.css" />
     
  
-	<script type="text/javascript" src="public/js/jquery/jquery.1.8.1.js"></script>
-	<script type="text/javascript" src="public/js/jquery_ui/jquery-ui-1.8.23.custom.min.js"></script>
+	<script type="text/javascript" src="./public/js/jquery/jquery.1.8.1.js"></script>
+	<script type="text/javascript" src="./public/js/jquery_ui/jquery-ui-1.8.23.custom.min.js"></script>
     
     
-	<script language="javascript" type="text/javascript" src="public/js/funciones.js"></script>
+	<script language="javascript" type="text/javascript" src="./public/js/funciones.js"></script>
   
 
 </head>
@@ -54,11 +54,11 @@
 	                        	<table>
 			                          <tr>
 			                          	<td valign="top" align="left">
-			                            	<label for="login">1. Descargar esta plantilla y llenar con los datos de su empresa:</label>
+			                            	<label for="bajarplantilla">1. Descargar esta plantilla y llenar con los datos de su empresa:</label>
 			                          	</td>
-			                          	<td valign="top" align="left">
-			                            	<input name="login" type="text" class="fade" id="login" value="" required />
-			                           	</td>     
+                                        <td valign="middle" align="left">
+                                            <div id="btnbajarplantillas"><a href="javascript:void(0);" data-accion="bajarplantillas" title="Descargar Plantilla" ><img src="public/images/save_download_32.png" border="0" width="24" height="24" /></a></div>
+                                        </td>     
 			        				  </tr>
 
 			        				  <tr></tr>
@@ -68,30 +68,25 @@
 			                            <td valign="top" align="left">
 			                            	<label for="password">2. Subir la plantilla con los datos de su empresa:</label>
 			                           	</td>
+                                        <td valign="middle" align="left">
+                                            <div id="btnGuardarRendArch"><a href="javascript:void(0);" data-accion="guardarrendarch" title="Subir Archivo" ><img src="public/images/save_as.png" border="0" width="24" height="24" /></a></div>
+                                        </td>    
 			                            <td valign="top" align="left">
-			                            	<input name="pass" type="text" class="fade" id="pass" value="" required />
+                                            <input name="subirarchivo" type="file" class="fade" id="subirarchivo" value="" onblur="" />
 			                           	</td>
+                                        
 			                          </tr>
+
+                                      <tr></tr>
+			        				  <tr></tr>
 
                                       <tr>
 			                            <td valign="top" align="left">
-			                            	<label for="password">3. Generar la evaluación en archivo pdf:</label>
+			                            	<label for="generarpdf">3. Generar la evaluación en archivo pdf:</label>
 			                           	</td>
-			                            <td valign="top" align="left">
-			                            	<input name="pass" type="text" class="fade" id="pass" value="" required />
-			                           	</td>
-			                          </tr>
-
-			                          <tr></tr>
-			                          <tr></tr>
-
-			                          <tr>
-			                          	<td valign="top" align="left">
-			                            	<input type="button" value="Entrar"  class="button" onclick="valida_logueo()"/>
-			                          	</td>
-			                          	<td valign="top" align="left">
-			                            	<input type="button"  value="Limpiar" class="button" onclick="window.location='';" />
-			                           	</td>      	
+                                        <td valign="middle" align="left">
+                                            <div id="btngenerarpdf"><a href="javascript:void(0);" data-accion="descargarrendarch" title="Descargar Evaluacion" ><img src="public/images/save_download_32.png" border="0" width="24" height="24" /></a></div>
+                                        </td>
 			                          </tr>
 
 			                          <tr>
@@ -104,6 +99,18 @@
                         	</fieldset>
                         </form>    
                         
+                        <?php
+                        //echo 'Archivo pdf creado.';
+                        //require_once("./model/archivopdfModel.php");
+
+
+                                
+                        //$emp=new Generacion();
+                        //$emp->generarpdf();
+
+
+
+                        ?>
                         
                     </div>
                     <!--  END PRIMARY CONTENT -->   
@@ -112,7 +119,7 @@
                 <!--  END CONTENT_WRAPPER -->
         	</article>
 
-            <?php include("model/archivopdfModel.php");?>
+            
 
         </section>
         
