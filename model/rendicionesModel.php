@@ -74,7 +74,8 @@ class  Rendiciones
 		# No recomiendo imprimir más cosas después de esto
 		*/
     }
-
+	//////////////////////////////////////////////////////////////////////////////////////////////////
+	//Esta es la funcion que se usa en este proyecto
     public function guardarrendarch()
     {	
 		
@@ -127,6 +128,7 @@ class  Rendiciones
 				//$buscar="";	
 
 				$archivo= $_POST['archivo'];
+				$sufijoarchivo= $_POST['sufijoarchivo'];
 				$ultposder= strrpos($archivo,chr(92))+1;
 				$archivo= substr($archivo,$ultposder);
 
@@ -152,18 +154,14 @@ class  Rendiciones
 				}
 
 				//VALIDAR TAMAÑO ARCHIVO
-				if ( $_FILES["file"]["size"] > 3000000 )
+				if ( $_FILES["file"]["size"] > 100000 )
 				{
 					$errors[] = 'El archivo supera el tamano permitido. ';
 				}
 
 				//VALIDAR TIPO ARCHIVO
 				$tipoarchivo= $_FILES["file"]["type"];
-				if (!(($_FILES["file"]["type"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-					|| ($_FILES["file"]["type"] == "image/jpeg")
-					|| ($_FILES["file"]["type"] == "image/png")
-					|| ($_FILES["file"]["type"] == "image/jpg")
-					|| ($_FILES["file"]["type"] == "application/pdf")))
+				if (!(($_FILES["file"]["type"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")))
 				{
 					//"application/x-zip-compressed"
 					//"application/vnd.openxmlformats-officedocument-wordprocessingml.document"
@@ -185,8 +183,9 @@ class  Rendiciones
 					//$id_encRend = $_SESSION["id_usuariosel"].$_SESSION["id_empresa"].$folio;
 
 					$tiempo=time();
-					$prefijo='Datos';
-					$nuevonomarch= $prefijo.'AnalisisRazonado'.date("Ymd_His", $tiempo).$extension;
+					$prefijo='datos';
+					//$sufijoarchivo= 'AnalisisRazonado'.date("Ymd_His", $tiempo);
+					$nuevonomarch= $prefijo.$sufijoarchivo.$extension;
 
 					move_uploaded_file($_FILES['file']['tmp_name'], '../datos/'.$nuevonomarch);
 					
@@ -195,7 +194,10 @@ class  Rendiciones
 					//$data = array('success' => 'NO FILES ARE SENT','formData' => $_REQUEST);
 					//$data = array('Tipo: ' => $_FILES["file"]["type"],'formData' => $_REQUEST);
 					
-					$_SESSION["archivo"]='AnalisisRazonado'.date("Ymd_His", $tiempo);
+
+
+
+					//$_SESSION["archivo"]='AnalisisRazonado'.date("Ymd_His", $tiempo);
 					
 					
 					$data = 0;	
@@ -251,6 +253,15 @@ class  Rendiciones
 		}
 
     }
+
+
+	//////////////////////////////////////////
+
+
+
+
+
+
 
 
     public function editarrendarch()

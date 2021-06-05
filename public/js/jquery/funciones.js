@@ -97,7 +97,7 @@ $(document).ready(function(){
       var hora = fecha.getHours();
       var minuto = fecha.getMinutes();
       var segundo = fecha.getSeconds();
-      var sufijoarchivo= 'analisisrazonado' + anio + mes + dia + hora + minuto + segundo;
+      var sufijoarchivo= 'AnalisisRazonado' + anio + mes + dia + "_" + hora + minuto + segundo;
      
       $('#sufijoarchivo').val(sufijoarchivo);
       
