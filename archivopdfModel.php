@@ -625,6 +625,86 @@
         $sheet->setCellValueByColumnAndRow($colyear, 33, $resh33);
 
 
+        
+        //$spreadsheet2->getSheetByName("ResumRatio")->getColumnDimension('D')->setVisible(false);
+        $sheet= $spreadsheet2->getSheetByName("ResumRatio");
+
+        
+
+        //$spreadsheet2->getSheetByName("ResumRatio")->getStyle('E8')->getFill()->getStartColor()->setARGB('FFFF0000');
+        for ($col = 5; $col<=9; ++$col)
+        {
+            //$evaluar= $sheet->getCellByColumnAndRow($col,65);
+            $evaluar= $spreadsheet2->getSheetByName("ResumRatio")->getCellByColumnAndRow($col,65)->getCalculatedValue();
+            switch ($evaluar)
+	        {
+                case 'n':
+                    switch ($col)
+	                {
+                        case 5:
+                            $rango='E8:E8';    
+                        break;
+
+                        case 6:
+                            $rango='F8:F8';    
+                        break;
+
+                        case 7:
+                            $rango='G8:G8';    
+                        break;
+
+                        case 8:
+                            $rango='H8:H8';    
+                        break;
+
+                        case 9:
+                            $rango='I8:I8';    
+                        break;     
+                    }
+                    
+                    $spreadsheet2->getSheetByName("ResumRatio")->getStyle($rango)->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FFFFFFFF');
+                    
+                    
+                    for ($row = 8; $row<=65; ++$row)
+                    {
+                        $sheet->setCellValueByColumnAndRow($col, $row, "");
+                            
+                    }          
+                break;
+
+                case 's':
+                    $sheet->setCellValueByColumnAndRow($col, 65, "");
+                break;
+            }   
+        }
+       
+        
+        /*
+
+        for ($row = 8; $row<=65; ++$row) {
+            $sheet->setCellValueByColumnAndRow(5, $row, "");    
+        }
+        */
+
+
+        $styleArray = [
+            'borders' => [
+                'left' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_NONE,
+                    //'color' => ['argb' => 'FFFF0000'],
+                ],
+            ],
+        ];
+        
+        $sheet->getStyle('E8:E64')->applyFromArray($styleArray);
+
+
+        //$spreadsheet2->getSheetByName("ResumRatio")->getPageSetup()->setPrintArea('B1:I17');
+        //$spreadsheet2->getSheetByName("ResumRatio")->getColumnDimension('E')->setWidth(0);
+       
+       
+        $spreadsheet2->getSheetByName("ResumRatio")->setBreak('A19', \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet::BREAK_ROW);
+
         $writer = IOFactory::createWriter($spreadsheet2, 'Xlsx');
         //$sheet->setCellValue("B4", "Valor B4");
         $writer->save("$archivoexcel");
@@ -644,8 +724,8 @@
     $archivopdf= $rutadestino.$archivofinal.".pdf";
     $writer->save($archivopdf);
 
-    unlink($exceldatos);
-    unlink($archivoexcel);
+    //unlink($exceldatos);
+    //unlink($archivoexcel);
 
     $descargapdf= $archivofinal.".pdf";
     

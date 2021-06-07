@@ -27,7 +27,7 @@ $(document).ready(function(){
     
       $.ajax({ 
         //contentType:false,
-        cache:false,
+        //cache:false,
         //processData:false,
         type: 'POST',
         dataType: 'json',
@@ -46,8 +46,9 @@ $(document).ready(function(){
           $('#btngenerarpdf').addClass("disabledbutton");
                   
         },
-        error:function(){
-            alert('ERROR GENERAL DEL SISTEMA, INTENTE MAS TARDE');
+        error:function(response){
+            
+            alert('ERROR GENERAL DEL SISTEMA, INTENTE MAS TARDE problema');
           }
       });       
     
